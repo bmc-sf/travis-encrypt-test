@@ -1,0 +1,10 @@
+sudo: true
+os: trusty
+cache: false
+env:
+  - BUILDNUMBER=1.1
+before_install:
+script:
+  echo "Encrypt Decrypt Build running..."
+  echo BUILDNUMBER
+  echo "Finished"
