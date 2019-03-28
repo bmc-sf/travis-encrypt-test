@@ -2,9 +2,8 @@ sudo: true
 os: trusty
 cache: false
 env:
-  - BUILDNUMBER=1.1
+- BUILDNUMBER=1.1
 before_install:
-script:
-  echo "Encrypt Decrypt Build running..."
-  echo BUILDNUMBER
-  echo "Finished"
+- openssl aes-256-cbc -K $encrypted_2b2c2cfe2ffe_key -iv $encrypted_2b2c2cfe2ffe_iv
+  -in ./secret_file.txt.enc -out ./secret_file.txt -d
+script: echo "Encrypt Decrypt Build running..." echo BUILDNUMBER echo "Finished"
