@@ -4,8 +4,7 @@ cache: false
 env:
   matrix:
   - BUILDNUMBER=1.1
-  global:
-    secure: VGcG9VUdn17xRNgFhxoIuU6mFLGq7bapZo7DSDIHYrAxqFVNDfkpd8IMZe+vKVujrGrS+fCkwKViHb+MWAMwnMQBaVgO39+FpZufnrCChoANn0/qqOmu+eTeIK/LDdp0saE+o2md2vx+JMwKuC/vzDlS9jCefwTuRHdYOzIydioQ3o26OReidIx1Lfr7IJh0FN5qqojtv8wMV0gfmRPDHpvbwEHazr44m1YVv2fiO1NuZHY/eqjXNatjcFx2bqtAGpg5YFmHKhz5B6ytyxaPRIsU+Q5tmR05qrdHZkMYGRnguqgZRMiG/yhg4P0ysSnfe1AlUdrLY9V9ptfZSJwCbdDoTEIa0dovLRrmAmRnzUEgDVleSMMTthfUW9rhGegrp3h4enn/11basT5iRyvjilI9PaH8imH/qHpEhOkWrzJcwrDG7XIDQNJR/nBA1V75uYUGdQksiua4+dBqZS5xB6IPFH7H0zu1gsZ63c1hM9hqX8ArmcjrFlwDFkd7yCeXHRS3+LYelGe16yIKYNnALgM/5gfDBWovzY/NVr7NWzEenpVt2e1/rTCuNix3mJmpdHqwq0ZaNGU8qpsuPQGC5DErqg9wOc1gZvVlGc8AaEgsV2LScmGWN9+AxOZH8J0Tp/zBTrWR2VJnvXAsdsOmvF8KVLWjhus7Et4rjjdMQWY=
 before_install:
-- openssl aes-256-cbc -k "$secret_password" -in secret_file.txt.enc -out secret_file.txt -d
+- openssl aes-256-cbc -K $encrypted_b13aa665fbec_key -iv $encrypted_b13aa665fbec_iv
+  -in assets/server.key.enc -out assets/server.key -d
 script: echo "Encrypt Decrypt Build running..." echo BUILDNUMBER echo "Finished"
