@@ -2,8 +2,10 @@ sudo: true
 os: trusty
 cache: false
 env:
-- BUILDNUMBER=1.1
-before_install:
-- openssl aes-256-cbc -K $encrypted_2b2c2cfe2ffe_key -iv $encrypted_2b2c2cfe2ffe_iv
-  -in ./secret_file.txt.enc -out ./secret_file.txt -d
+  matrix:
+  - BUILDNUMBER=1.1
+  global:
+    secure: Kt3sGT/SF/ClwnAn0+dd9LXT8jZyvyKnZsfHWWBQYBrVH18psRWs0L5gU8u15SZImR3ywNXOA+GjrPU/eGu8sExECcBKtX5oIzOCd9M0LCYdFWgbJL5V6lVz+UAUbi2231I0wRDR8NJT+B/ZTu/6h+vldE3bXbudkIEg7JWkMMjico5oqWq4/WzeBhtHGLL2O440PTB+3uFjJlXjEYPoBxHjx1gEk1Cznb/+96q850/rHXq7EqwcHhL4e5luuLUSJBCkjd7vUCQbulUsZNooEpJt66pLPlcMFwXl+KuUuxsNV54nnos8qBTz6RqVz8f0sOTbIeb1ccXWD5I9o4Mvle0HBuuTfZAv8S7KD2+rXvGjz8XE6OPJTUUamrftRd8Zn5qlgaMssoS/RoblYjYTRml0ZAlFWbK59J5blAML4DDWf/wJKs+DcT9Mn6mLp03PDddMxsaJkq8dB6KaChr0p8g03zmkeMeyNX2AT+MASaH+qo5xHVCTNFWbkBbqz6kCDbS2p+4FkDvlkgIUEjEa3uzxtZ3nPARaIOpc2/CyeCsATemdBOPJ4RKa05glDowWeMFr4QTofmIBqpInairVk3pNnckbkNK8f8ug6NfayqM7lnmjvp/XOLpuGzhVEf5TlVo528h45yKGLCoidytIzIKzaIVNdBL0FWk0Qpvds58=
+before_install: 
+- openssl aes-256-cbc -k "$secret_password" -in secret_file.txt.enc -out secret_file.txt -d
 script: echo "Encrypt Decrypt Build running..." echo BUILDNUMBER echo "Finished"
